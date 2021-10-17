@@ -167,19 +167,25 @@ class WordVocab(Vocab):
             return pickle.load(f)
 
 
-def build():
-    import argparse
+import argparse
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--corpus_path", required=True, type=str)
-    parser.add_argument("-o", "--output_path", required=True, type=str)
-    parser.add_argument("-s", "--vocab_size", type=int, default=None)
-    parser.add_argument("-e", "--encoding", type=str, default="utf-8")
-    parser.add_argument("-m", "--min_freq", type=int, default=1)
-    args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument("-c", "--corpus_path", required=True, type=str)
+# parser.add_argument("-o", "--output_path", required=True, type=str)
+# parser.add_argument("-s", "--vocab_size", type=int, default=None)
+# parser.add_argument("-e", "--encoding", type=str, default="utf-8")
+# parser.add_argument("-m", "--min_freq", type=int, default=1)
+# args = parser.parse_args()
 
-    with open(args.corpus_path, "r", encoding=args.encoding) as f:
-        vocab = WordVocab(f, max_size=args.vocab_size, min_freq=args.min_freq)
+args = {}
+args["corpus_path"] = "data/corpus.small"
+args["encoding"] = "utf-8"
+args["vocab_size"] = None
+args["min_freq"] = 1
+args["output_path"] = "data/vocab.small"
 
-    print("VOCAB SIZE:", len(vocab))
-    vocab.save_vocab(args.output_path)
+with open(args["corpus_path"], "r", encoding=args["encoding"]) as f:
+    vocab = WordVocab(f, max_size=args["vocab_size"], min_freq=args["min_freq"])
+
+print("VOCAB SIZE:", len(vocab))
+vocab.save_vocab(args["output_path"])

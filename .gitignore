@@ -13,6 +13,9 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.vscode
+bert_pytorch/bert.pth
+bert_pytorch/bert-12-heads-768-hidden.pt
 build/
 develop-eggs/
 dist/
@@ -168,4 +171,5 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+bert_pytorch/bert.pth
 
